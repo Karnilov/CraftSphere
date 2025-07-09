@@ -32,9 +32,9 @@ def get_api_url(link):
     path = '/'.join(parts[7:])
     return f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
 
-def count_files(folder_url):
+def count_files(folder_url, headers=None):
     try:
-        r = requests.get(folder_url)
+        r = requests.get(folder_url, headers=headers)
         r.raise_for_status()
         items = r.json()
     except Exception:
@@ -44,14 +44,23 @@ def count_files(folder_url):
         if item['type'] == 'file':
             count += 1
         elif item['type'] == 'dir':
-            count += count_files(item['url'])
+            count += count_files(item['url'], headers=headers)
     return count
 
-def download_file(file_url, save_path):
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    r = requests.get(file_url)
-    with open(save_path, 'wb') as f:
-        f.write(r.content)
+def download_folder(api_url, local_folder, progress_ui, headers=None):
+    r = requests.get(api_url, headers=headers)
+    r.raise_for_status()
+    items = r.json()
+
+    for item in items:
+        if item['type'] == 'file':
+            local_path = os.path.join(local_folder, item['name'])
+            download_file(item['download_url'], local_path)
+            progress_ui.update(item['name'])
+        elif item['type'] == 'dir':
+            new_local = os.path.join(local_folder, item['name'])
+            download_folder(item['url'], new_local, progress_ui, headers=headers)
+
 
 def download_folder(api_url, local_folder, progress_ui):
     r = requests.get(api_url)
@@ -111,6 +120,7 @@ def show_license_and_get_settings():
             return
         result["install_path"] = path_var.get()
         result["shortcut"] = shortcut_var.get()
+        result["token"] = token_var.get().strip()
         win.destroy()
 
     def browse_folder():
@@ -120,7 +130,7 @@ def show_license_and_get_settings():
 
     win = tk.Tk()
     win.title("Установщик CraftSphere")
-    win.geometry("500x400")
+    win.geometry("500x500")
 
     tk.Label(win, text="Лицензионное соглашение", font=("Arial", 12, "bold")).pack(pady=10)
     license_text = tk.Text(win, height=10, wrap="word")
@@ -133,15 +143,19 @@ def show_license_and_get_settings():
 4. Авторы не несут ответственности за возможные ошибки, повреждение данных или иной ущерб, вызванный использованием данного программного обеспечения.
 5. Использование лаунчера означает согласие с условиями этого соглашения и признание его открытого статуса.
     """)
-
     license_text.config(state="disabled")
     license_text.pack(padx=10, pady=5)
 
     license_var = tk.BooleanVar()
     shortcut_var = tk.BooleanVar()
+    token_var = tk.StringVar()
     path_var = tk.StringVar(value=os.path.join(os.environ.get("ProgramFiles", "C:\\Program Files"), "CraftSphere"))
 
     tk.Checkbutton(win, text="Я принимаю условия лицензионного соглашения", variable=license_var).pack(pady=5)
+
+    tk.Label(win, text="GitHub токен (необязательно, если превышен лимит):").pack()
+    tk.Entry(win, textvariable=token_var, width=60).pack(pady=5)
+
     tk.Label(win, text="Путь установки:").pack()
     path_frame = tk.Frame(win)
     path_entry = tk.Entry(path_frame, textvariable=path_var, width=50)
@@ -155,6 +169,7 @@ def show_license_and_get_settings():
     win.mainloop()
     return result
 
+
 def run_installer():
     settings = show_license_and_get_settings()
     if not settings:
@@ -162,9 +177,12 @@ def run_installer():
 
     install_path = settings["install_path"]
     create_shortcut_flag = settings["shortcut"]
+    token = settings.get("token", "")
 
     api_url = get_api_url(GITHUB_FOLDER_URL)
-    total_files = count_files(api_url)
+    headers = {"Authorization": f"token {token}"} if token else None
+
+    total_files = count_files(api_url, headers=headers)
 
     if os.path.exists(install_path):
         try:
@@ -175,7 +193,7 @@ def run_installer():
     os.makedirs(install_path, exist_ok=True)
 
     ui = ProgressUI(total_files)
-    download_folder(api_url, install_path, ui)
+    download_folder(api_url, install_path, ui, headers=headers)
     ui.close()
 
     if create_shortcut_flag:
@@ -183,6 +201,7 @@ def run_installer():
         create_shortcut(exe_or_launcher)
 
     tk.messagebox.showinfo("Готово", f"Установка завершена в:\n{install_path}")
+
 
 if __name__ == "__main__":
     run_installer()
