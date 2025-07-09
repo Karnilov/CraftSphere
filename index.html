@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>КрафтоСфера — Лаунчер Minecraft</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2e2e3e);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #2d2d44;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      background: url('https://i.imgur.com/k0nZpXG.png') no-repeat center;
+      background-size: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 10px #00ffea;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 32px;
+      color: #00ffea;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-weight: 400;
+      color: #cccccc;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 20px 0 30px;
+    }
+
+    button {
+      background-color: #00ffea;
+      color: #1e1e2f;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00c5ba;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo"></div>
+    <h1>Лаунчер КрафтоСфера</h1>
+    <h2>от InterplanetaryHackers</h2>
+    <p>
+      Добро пожаловать на сервер <strong>КрафтоСфера</strong>!<br>
+      Нажми кнопку ниже, чтобы скачать лаунчер Minecraft<br>
+      и мгновенно подключиться к нашему миру.
+    </p>
+    <button onclick="downloadLauncher()">Скачать лаунчер</button>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 InterplanetaryHackers. Все права защищены.
+  </div>
+
+  <script>
+    function downloadLauncher() {
+      const url = "https://raw.githubusercontent.com/Karnilov/CraftSphere/main/launcher/installer.py";
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "CraftSphere_installer.py";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+</body>
+</html>
