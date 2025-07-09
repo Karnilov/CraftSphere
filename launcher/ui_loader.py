@@ -1,3 +1,20 @@
+import os
+import sys
+import ctypes
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+# Перезапуск с правами администратора, если не админ
+if not is_admin():
+    ctypes.windll.shell32.ShellExecuteW(
+        None, "runas", sys.executable, " ".join([f'"{arg}"' for arg in sys.argv]), None, 1
+    )
+    sys.exit()
+    
 import xml.etree.ElementTree as ET
 import pygame
 import os
