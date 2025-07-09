@@ -47,6 +47,12 @@ def count_files(folder_url, headers=None):
             count += count_files(item['url'], headers=headers)
     return count
 
+def download_file(file_url, save_path):
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    r = requests.get(file_url)
+    with open(save_path, 'wb') as f:
+        f.write(r.content)
+
 def download_folder(api_url, local_folder, progress_ui, headers=None):
     r = requests.get(api_url, headers=headers)
     r.raise_for_status()
@@ -60,21 +66,6 @@ def download_folder(api_url, local_folder, progress_ui, headers=None):
         elif item['type'] == 'dir':
             new_local = os.path.join(local_folder, item['name'])
             download_folder(item['url'], new_local, progress_ui, headers=headers)
-
-
-def download_folder(api_url, local_folder, progress_ui):
-    r = requests.get(api_url)
-    r.raise_for_status()
-    items = r.json()
-
-    for item in items:
-        if item['type'] == 'file':
-            local_path = os.path.join(local_folder, item['name'])
-            download_file(item['download_url'], local_path)
-            progress_ui.update(item['name'])
-        elif item['type'] == 'dir':
-            new_local = os.path.join(local_folder, item['name'])
-            download_folder(item['url'], new_local, progress_ui)
 
 class ProgressUI:
     def __init__(self, total):
@@ -180,9 +171,9 @@ def run_installer():
     token = settings.get("token", "")
 
     api_url = get_api_url(GITHUB_FOLDER_URL)
-    headers = {"Authorization": f"token {token}"} if token else None
+    HEADERS = {"Authorization": f"token {token}"} if token else None
 
-    total_files = count_files(api_url, headers=headers)
+    total_files = count_files(api_url, headers=HEADERS)
 
     if os.path.exists(install_path):
         try:
@@ -193,7 +184,7 @@ def run_installer():
     os.makedirs(install_path, exist_ok=True)
 
     ui = ProgressUI(total_files)
-    download_folder(api_url, install_path, ui, headers=headers)
+    download_folder(api_url, install_path, ui, headers=HEADERS)
     ui.close()
 
     if create_shortcut_flag:
