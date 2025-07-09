@@ -166,7 +166,8 @@ def run_installer():
     if not settings:
         return
 
-    install_path = settings["install_path"]
+    base_path = settings["install_path"]
+    install_path = os.path.join(base_path, "CraftSphere")
     create_shortcut_flag = settings["shortcut"]
     token = settings.get("token", "")
 
@@ -174,12 +175,6 @@ def run_installer():
     HEADERS = {"Authorization": f"token {token}"} if token else None
 
     total_files = count_files(api_url, headers=HEADERS)
-
-    if os.path.exists(install_path):
-        try:
-            shutil.rmtree(install_path)
-        except Exception as e:
-            print(f"Ошибка очистки папки: {e}")
 
     os.makedirs(install_path, exist_ok=True)
 
