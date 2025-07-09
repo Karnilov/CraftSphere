@@ -1,0 +1,28 @@
+<ui>
+    <label x="50" y="30" width="500" height="40" text="КрафтоСфера" font_size="30" />
+
+    <!-- Выбор версии Minecraft -->
+    <label x="50" y="80" width="250" height="30" text="Выберите режим:" font_size="16" />
+    <dropdown id="SelectVersion" x="50" y="100" width="250" height="40" items="Анархия с донатами, Анархия без доната, Техно, Bad wars, Королевство с модами, Королевства без модов" font_size="18" max_visible_options="2" />
+
+    <!-- Кнопка запуска -->
+    <button id="Run" x="50" y="150" width="250" height="50" text="Играть" font_size="22" />
+
+    <!-- Прогресс загрузки -->
+    <progressbar id="TotalPrograss" x="50" y="220" width="500" height="15" value="0" max="100" show_percent="1" font_size="14" visible="False" />
+    <progressbar id="TaskPrograss" x="50" y="237" width="500" height="15" value="0" max="100" show_percent="1" font_size="14" visible="False" />
+
+    <!-- Имя пользователя -->
+    <label x="310" y="80" width="250" height="30" text="Имя пользователя:" font_size="16" />
+    <inputfield id="Username" x="310" y="100" width="250" height="40" font_size="18" placeholder="Username" />
+
+    <!-- Слайдер выделенной памяти -->
+    <label id="CurentMemory" x="500" y="154" width="180" height="20" text="1024 MB" font_size="16" />
+    <slider id="SelectMemory" x="310" y="150" width="180" height="20" min="512" max="4096" value="1024" />
+
+    <!-- Чекбокс переустановки -->
+    <checkbox id="Reinstall" x="310" y="180" width="180" height="20" text="Переустановить" font_size="14" />
+
+    <!-- Авторство -->
+    <label x="500" y="255" width="200" height="20" text="© 2025 KoDer" font_size="12" />
+</ui>
