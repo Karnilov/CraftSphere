@@ -24,13 +24,6 @@ import sys
 import winshell
 from win32com.client import Dispatch
 
-GITHUB_TOKEN = "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"
-
-HEADERS = {
-    "Authorization": f"token {GITHUB_TOKEN}"
-}
-
-
 GITHUB_FOLDER_URL = "https://github.com/Karnilov/CraftSphere/tree/main/launcher"
 
 def get_api_url(link):
@@ -41,7 +34,7 @@ def get_api_url(link):
 
 def count_files(folder_url):
     try:
-        r = requests.get(folder_url, headers=HEADERS)
+        r = requests.get(folder_url)
         r.raise_for_status()
         items = r.json()
     except Exception:
@@ -61,7 +54,7 @@ def download_file(file_url, save_path):
         f.write(r.content)
 
 def download_folder(api_url, local_folder, progress_ui):
-    r = requests.get(api_url, headers=HEADERS)
+    r = requests.get(api_url)
     r.raise_for_status()
     items = r.json()
 
