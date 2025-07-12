@@ -3,7 +3,7 @@
 
     <!-- Выбор версии Minecraft -->
     <label x="50" y="80" width="250" height="30" text="Выберите режим:" font_size="16" />
-    <dropdown id="SelectVersion" x="50" y="100" width="250" height="40" items="Анархия с донатами, Анархия без доната, Техно, Bad wars, Королевство с модами, Королевства без модов" font_size="18" max_visible_options="2" />
+    <dropdown id="SelectVersion" x="50" y="100" width="250" height="40" items="Анархия с донатами, Анархия без доната, Техно, Bad wars, Королевство с модами, Королевства без модов, Королевства V2.0" font_size="18" max_visible_options="2" />
 
     <!-- Кнопка запуска -->
     <button id="Run" x="50" y="150" width="250" height="50" text="Играть" font_size="22" />

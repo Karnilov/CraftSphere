@@ -7,7 +7,7 @@ import pygame
 import minecraft_launcher_lib
 from ui_loader import load_ui_from_folder
 from threading import Thread
-from subprocess import call, run
+from subprocess import Popen, run
 from minecraft_launcher_lib.utils import get_minecraft_directory
 from minecraft_launcher_lib.install import install_minecraft_version
 from minecraft_launcher_lib.command import get_minecraft_command
@@ -39,8 +39,9 @@ versions = {
     'Анархия без доната': {'version': '1.20.1', 'forge': False},
     'Техно': {'version': '1.12.2', 'forge': True, 'modsURL': 'https://github.com/Karnilov/CraftSphere/tree/main/Techno'},
     'Bad wars': {'version': '1.20.1', 'forge': False},
-    'Королевство с модами': {'version': '1.20.1', 'forge': True, 'modsURL': 'https://github.com/Karnilov/CraftSphere/tree/main/Королевство'},
-    'Королевства без модов': {'version': '1.20.1', 'forge': False}
+    'Королевство с модами': {'version': '1.20.1', 'forge': True, 'modsURL': 'https://github.com/Karnilov/CraftSphere/tree/main/Kingdom'},
+    'Королевства без модов': {'version': '1.20.1', 'forge': False},
+    'Королевства V2.0': {'version': '1.19.2', 'forge': True, 'modsURL': 'https://github.com/Karnilov/CraftSphere/tree/main/Kingdom%20V2.0'}
 }
 
 def set_status(text):
@@ -140,7 +141,7 @@ def run():
             fv = minecraft_launcher_lib.forge.find_forge_version(vid)
             if fv:
                 TotalPrograss.lable = f"Installing Forge {fv}..."
-                install_forge_version(fv, mc_dir, callback=None)
+                install_forge_version(fv, mc_dir, callback=callback)
                 TotalPrograss.value += 1
                 vid = fv.replace(vid, vid + "-forge")
                 TotalPrograss.lable = "Downloading mods..."
@@ -169,7 +170,7 @@ def run():
             minecraft_directory=mc_dir,
             options=options
         )
-        call(cmd)
+        Popen(cmd, shell=True)
         TotalPrograss.visible = False
         TaskPrograss.visible = False
 

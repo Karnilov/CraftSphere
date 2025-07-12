@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ea7713d0-738a-4581-8d6d-b993ede268be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/v1/ui.xml" beforeDir="false" afterPath="$PROJECT_DIR$/assets/v1/ui.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/assault_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/bazooka.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/bazooka.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/chain_gun.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/chain_gun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/grenade_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/grenade_launcher.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/handgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/handgun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/machine_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/machine_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cgm/guns/shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/cgm/guns/shotgun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.py" beforeDir="false" afterPath="$PROJECT_DIR$/install.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/version.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Karnilov&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Karnilov/CraftSphere.git&quot;,
+    &quot;accountId&quot;: &quot;c91f9d27-81b2-40f6-be58-0e71149d3858&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2zeDvJS2H0am0WsnPalShktmPm7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.install.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.update_checker.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/CraftSphere/git/CraftSphere/launcher",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-4f4e415b4190-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.26053.29" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea7713d0-738a-4581-8d6d-b993ede268be" name="Changes" comment="" />
+      <created>1752082874707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752082874707</updated>
+    </task>
+    <servers />
+  </component>
+</project>
